@@ -13,13 +13,13 @@ export const Cube: FC<ICube> = ({
   size,
   color
 }) => {
-  const ref = useRef<Mesh | null>(null!);
+  const ref = useRef<Mesh | null>(null);
 
   useFrame((state, delta) => {
     if (ref.current) {
 			ref.current!.rotation.x += delta;
 			ref.current!.rotation.y += delta * 2.0;
-			ref.current!.position.z = Math.sin(state.clock.elapsedTime) * 2;
+			ref.current!.position.z = Math.cos(state.clock.elapsedTime) * 2;
     }
   });
 

@@ -26,7 +26,7 @@ export const Torus: FC<ITorus> = ({
   return (
 	  <mesh position={position} ref={ref}>
 		  <torusGeometry args={size}/>
-		  <meshStandardMaterial color={color}/>
+		  <meshStandardMaterial color={color} />
 	  </mesh>
   );
 };
