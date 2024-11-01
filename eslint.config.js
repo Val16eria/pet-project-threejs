@@ -1,35 +1,34 @@
-import js from '@eslint/js';
 import ts from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import';
 
 export default [
   {
-    ignores: ['dist'], // Игнорируем директорию dist
-    files: ['**/*.{ts,tsx}'], // Файлы, к которым применяется конфигурация
+    ignores: ['dist'],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: parser,
       parserOptions: {
-        ecmaVersion: 2020, // Поддержка ES2020
-        sourceType: 'module', // Используем модули
+        ecmaVersion: 2020,
+        sourceType: 'module',
       },
     },
     plugins: {
       ts: ts,
-      import: importPlugin, // Подключаем плагин import
+      import: importPlugin,
     },
     rules: {
-      'quotes': ['error', 'double'], // Двойные кавычки
+      'quotes': ['error', 'double'],
       'import/order': [
         'error',
         {
           groups: [['builtin', 'external'], 'internal', ['parent', 'sibling'], 'index'],
-          'newlines-between': 'always', // Пустая строка между группами
+          'newlines-between': 'always',
         },
       ],
-      'indent': ['error', 2], // Два пробела отступ
-      'object-curly-spacing': ['error', 'always'], // Пробелы между фигурными скобками
-      'semi': ['error', 'always'], // Точка с запятой в конце выражений
+      'indent': ['error', 2],
+      'object-curly-spacing': ['error', 'always'],
+      'semi': ['error', 'always'],
     },
   },
 ];

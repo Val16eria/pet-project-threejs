@@ -1,14 +1,14 @@
-import { useFrame } from "@react-three/fiber";
 import { FC, useRef } from "react";
 import { Mesh } from "three";
+import { useFrame } from "@react-three/fiber";
 
-interface ICube {
+interface ITorus {
 	position: [number, number, number];
 	size: number[];
 	color: string;
 }
 
-export const Cube: FC<ICube> = ({
+export const Torus: FC<ITorus> = ({
   position,
   size,
   color
@@ -18,15 +18,15 @@ export const Cube: FC<ICube> = ({
   useFrame((state, delta) => {
     if (ref.current) {
 			ref.current!.rotation.x += delta;
-			ref.current!.rotation.y += delta * 2.0;
-			ref.current!.position.z = Math.sin(state.clock.elapsedTime) * 2;
+			ref.current!.rotation.y += delta;
+			ref.current!.position.z = Math.cos(state.clock.elapsedTime) * 2;
     }
   });
 
   return (
-    <mesh position={position} ref={ref}>
-      <boxGeometry args={size}/>
-      <meshStandardMaterial color={color}/>
-    </mesh>
+	  <mesh position={position} ref={ref}>
+		  <torusGeometry args={size}/>
+		  <meshStandardMaterial color={color}/>
+	  </mesh>
   );
 };

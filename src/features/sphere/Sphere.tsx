@@ -2,7 +2,7 @@ import { FC } from "react";
 
 interface ISphere {
 	position: [number, number, number];
-	size: [number, number, number];
+	size: number[];
 	color: string;
 }
 

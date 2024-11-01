@@ -1,7 +1,11 @@
 import { Canvas } from "@react-three/fiber";
 import { FC } from "react";
 
-import { Cube, Sphere } from "../features";
+import {
+  Cube,
+  Sphere,
+  Torus
+} from "../features";
 
 import "./stylus/index.css";
 
@@ -19,8 +23,14 @@ export const App: FC = () => {
 
 	    <Sphere
 		    position={[-1, 0, 0]}
-		    size={[1, 1, 1]}
-		    color="blue"
+		    size={[1, 30, 30]}
+		    color="lightblue"
+	    />
+
+	    <Torus
+		    position={[2, 0, 0]}
+		    size={[0.5, 0.1, 30, 30]}
+		    color="red"
 	    />
 
 
