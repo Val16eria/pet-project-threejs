@@ -1,11 +1,51 @@
+import { Canvas } from "@react-three/fiber";
 import { FC } from "react";
+
+import { Cube, Sphere } from "../features";
 
 import "./stylus/index.css";
 
 export const App: FC = () => {
-    return (
-        <div>
-            <p>app</p>
-        </div>
-    );
+  return (
+    <Canvas>
+      <ambientLight intensity={0.1}/>
+      <directionalLight position={[0, 0, 2]} intensity={0.5}/>
+
+      <Cube
+        position={[0, 0, 0]}
+        size={[1, 1, 1]}
+        color="lightpink"
+      />
+
+	    <Sphere
+		    position={[-1, 0, 0]}
+		    size={[1, 1, 1]}
+		    color="blue"
+	    />
+
+
+      {/*<group position={[0, -1, 0]}>*/}
+      {/*    <Cube*/}
+      {/*        position={[1, 0, 0]}*/}
+      {/*        size={[1, 1, 1]}*/}
+      {/*        color="orange"*/}
+      {/*    />*/}
+      {/*    <Cube*/}
+      {/*        position={[-1, 0, 0]}*/}
+      {/*        size={[1, 1, 1]}*/}
+      {/*        color="orange"*/}
+      {/*    />*/}
+      {/*    <Cube*/}
+      {/*        position={[-1, 2, 0]}*/}
+      {/*        size={[1, 1, 1]}*/}
+      {/*        color="orange"*/}
+      {/*    />*/}
+      {/*    <Cube*/}
+      {/*        position={[1, 2, 0]}*/}
+      {/*        size={[1, 1, 1]}*/}
+      {/*        color="orange"*/}
+      {/*    />*/}
+      {/*</group>*/}
+    </Canvas>
+  );
 };

@@ -1,28 +1,35 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import js from '@eslint/js';
+import ts from '@typescript-eslint/eslint-plugin';
+import parser from '@typescript-eslint/parser';
+import importPlugin from 'eslint-plugin-import';
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+export default [
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    ignores: ['dist'], // Игнорируем директорию dist
+    files: ['**/*.{ts,tsx}'], // Файлы, к которым применяется конфигурация
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      parser: parser,
+      parserOptions: {
+        ecmaVersion: 2020, // Поддержка ES2020
+        sourceType: 'module', // Используем модули
+      },
     },
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      ts: ts,
+      import: importPlugin, // Подключаем плагин import
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
+      'quotes': ['error', 'double'], // Двойные кавычки
+      'import/order': [
+        'error',
+        {
+          groups: [['builtin', 'external'], 'internal', ['parent', 'sibling'], 'index'],
+          'newlines-between': 'always', // Пустая строка между группами
+        },
       ],
+      'indent': ['error', 2], // Два пробела отступ
+      'object-curly-spacing': ['error', 'always'], // Пробелы между фигурными скобками
+      'semi': ['error', 'always'], // Точка с запятой в конце выражений
     },
   },
-)
+];
