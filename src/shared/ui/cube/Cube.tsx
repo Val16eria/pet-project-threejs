@@ -1,10 +1,14 @@
-import { useFrame } from "@react-three/fiber";
+import {
+	BoxGeometryProps,
+	MeshProps,
+	useFrame
+} from "@react-three/fiber";
 import { FC, useRef } from "react";
 import { Mesh } from "three";
 
 interface ICube {
-	position: [number, number, number];
-	size: number[];
+	position: MeshProps["position"];
+	size: BoxGeometryProps["args"];
 	color: string;
 }
 

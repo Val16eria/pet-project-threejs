@@ -4,11 +4,15 @@ import {
   useState
 } from "react";
 import { Mesh } from "three";
-import { ThreeEvent, useFrame } from "@react-three/fiber";
+import {
+	MeshProps,
+	SphereGeometryProps,
+	useFrame
+} from "@react-three/fiber";
 
 interface ISphere {
-	position: [number, number, number];
-	size: number[];
+	position: MeshProps["position"];
+	size: SphereGeometryProps["args"];
 	color: string;
 }
 
@@ -30,7 +34,7 @@ export const Sphere: FC<ISphere> = ({
     setClicked((prevState) => !prevState);
   };
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (ref.current) {
       const speed = isHovered ? 1 : 0.2;
 			ref.current!.rotation.y += delta * speed;
