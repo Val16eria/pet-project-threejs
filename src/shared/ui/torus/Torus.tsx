@@ -1,10 +1,14 @@
 import { FC, useRef } from "react";
 import { Mesh } from "three";
-import { useFrame } from "@react-three/fiber";
+import {
+	MeshProps,
+	TorusGeometryProps,
+	useFrame
+} from "@react-three/fiber";
 
 interface ITorus {
-	position: [number, number, number];
-	size: number[];
+	position: MeshProps["position"];
+	size: TorusGeometryProps["args"];
 	color: string;
 }
 
