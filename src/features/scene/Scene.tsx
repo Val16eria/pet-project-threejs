@@ -18,38 +18,38 @@ export const Scene: FC = () => {
 
   const { lightColor, lightIntensity } = useControls({
     lightColor: "white",
-	  lightIntensity: {
+    lightIntensity: {
       value: 3.5,
-		  min: 0,
-		  max: 5,
-		  step: 0.1
-	  }
+      min: 0,
+      max: 5,
+      step: 0.1
+    }
   });
 
   useHelper(
 		directionalLightRef as unknown as MutableRefObject<Object3D>,
-	  DirectionalLightHelper,
-	  0.5,
-	  "white"
+		DirectionalLightHelper,
+		0.5,
+		"white"
   );
 
   return (
     <>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.5}/>
       <directionalLight
-	      position={[0, 0, 2]}
-	      intensity={lightIntensity}
-	      color={lightColor}
-	      ref={directionalLightRef}
+        position={[0, 0, 2]}
+        intensity={lightIntensity}
+        color={lightColor}
+        ref={directionalLightRef}
       />
 
       <TorusKnot
-	      position={[0, 0, 0]}
-	      size={[0.2, 1000, 50]}
-	      color="#FF69B4"
+        position={[0, 0, 0]}
+        size={[0.2, 1000, 50]}
+        color="#FF69B4"
       />
 
-      <OrbitControls enableZoom={false} />
+      <OrbitControls enableZoom={false}/>
     </>
   );
 };
