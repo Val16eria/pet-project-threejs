@@ -1,7 +1,7 @@
 import {
-	BoxGeometryProps,
-	MeshProps,
-	useFrame
+  BoxGeometryProps,
+  MeshProps,
+  useFrame
 } from "@react-three/fiber";
 import { FC, useRef } from "react";
 import { Mesh } from "three";
